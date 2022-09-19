@@ -436,12 +436,12 @@ RegisterNetEvent("BLACKJACK:PlaceBetChip", function(index, seat, bet, double, sp
 end)
 
 function hideUi()
-	exports['textUi']:HideTextUi('hide')
+	exports['qb-core']:HideText()
 	exports['casinoUi']:HideCasinoUi('hide') 
 end
  
 function hideUiOnStart()
-	exports['textUi']:HideTextUi('hide')
+	exports['qb-core']:HideText()
 	exports['casinoUi']:HideCasinoUi('hide') 
 	exports['qb-menu']:closeMenu() 
 end
@@ -459,7 +459,7 @@ RegisterNetEvent("BLACKJACK:RequestBets", function(index)
 		retval = result
 		CreateThread(function()
 			scrollerIndex = index
-			exports['textUi']:DrawTextUi('show', "<strong>Max Bet:</strong> Q</p><strong>Adjust Bet: </strong>←/→</p><strong>Place Bet: </strong>ENTER</p><strong>ESC:</strong> Exit") 
+			exports['qb-core']:DrawText("<strong>Max Bet:</strong> Q</p><strong>Adjust Bet: </strong>←/→</p><strong>Place Bet: </strong>ENTER</p><strong>ESC:</strong> Exit") 
 			while true do
 				Wait(0)
 				exports['casinoUi']:DrawCasinoUi('show', "Diamond Casino Blackjack</p>Time Left: 0:"..timeLeft.."</p>Current Bet: "..bet.." </p>Availble chips: "..retval)   
@@ -690,7 +690,7 @@ RegisterNetEvent("doj:client:blackjackMenu", function(args)
 end)
 
 RegisterNetEvent("BLACKJACK:RequestMove", function()
-	exports['textUi']:DrawTextUi('show', "Bets closing in 30 seconds")
+	exports['qb-core']:DrawText("Bets closing in 30 seconds")
 	if leavingBlackjack == true then 
 		leaveBlackjack() 
 		return 
@@ -1024,7 +1024,7 @@ function ProcessTables()
 					end
 					if inZone and not alreadyEnteredZone then
 						alreadyEnteredZone = true
-						exports['textUi']:DrawTextUi('show', text) 
+						exports['qb-core']:DrawText(text) 
 					end
 					if not inZone and alreadyEnteredZone then
 						alreadyEnteredZone = false
@@ -1054,7 +1054,7 @@ exports("SetCanSitDownCallback", SetCanSitDownCallback)
 
 
 exports["qb-blackjack"]:SetSatDownCallback(function()
-	exports['textUi']:HideTextUi('hide')
+	exports['qb-core']:HideText()
 end)
 
 exports["qb-blackjack"]:SetStandUpCallback(function()

@@ -6,12 +6,15 @@ description 'Rexhack Gaming : Inside-Track'
 
 version '1.0.1'
 
+shared_scripts { 
+    'config.lua'
+}
+
+
 client_scripts {
-    '@PolyZone/client.lua',
-    '@PolyZone/CircleZone.lua',
-    'config.lua',
     'client/utils.lua',
     'client/client.lua',
+    'client/screens/*.lua',
 }
 
 server_script 'server/server.lua' 

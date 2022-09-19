@@ -207,7 +207,7 @@ createRulettAsztal = function(index, data)
 
             TaskPlayAnim(PlayerPedId(), endingDict, whichAnim, 1.0, 1.0, 2500, 0)
             SetPlayerControl(PlayerId(), 0, 0)
-            hideUi()
+            hide()
             Wait(3600)
             SetPlayerControl(PlayerId(), 1, 0)
         end
@@ -733,7 +733,7 @@ function Draw3DText(coords, text, size, font)
 end
 
 function hideUi()
-	exports['textUi']:HideTextUi('hide')
+            exports['qb-core']:HideText()
 	exports['casinoUi']:HideCasinoUi('hide') 
 end
 
@@ -807,7 +807,7 @@ CreateThread(function()
                     local dist = Vdist(playerpos, objcoords)
                     if dist < 2.4 then
                         if dist < 2.3 then
-                            exports['textUi']:DrawTextUi('show',"Diamond Casino Roulette</p>Press [E] to sit down")
+                            exports['qb-core']:DrawText("Diamond Casino Roulette</p>Press [E] to sit down")
                             local closestChairData = getClosestChairData(v.tableObject)
 
                             if closestChairData == nil then
@@ -917,14 +917,14 @@ function casinoNuiUpdateGame(rulettIndex, ido, statusz)
         retval = result
         if selectedRulett == rulettIndex then
             if not statusz then
-                exports['casinoUi']:DrawCasinoUi('show', "Diamond Casino Blackjack</p>"..ido.." Seconds Left</p>Current Bet: "..currentBetAmount.." chips</p>Availble chips: "..retval)
+                exports['casinoUi']:DrawCasinoUi( "Diamond Casino Blackjack</p>"..ido.." Seconds Left</p>Current Bet: "..currentBetAmount.." chips</p>Availble chips: "..retval)
                 if Config.allowCustomBet then
-                    exports['textUi']:DrawTextUi('show', "Adjust Bet: <strong>↑/↓</strong></p>LEFT CLICK: Bet number</p>SPACEBAR: Custom Amount</p>E: Change camera</p>ESC: Exit")
+                    exports['qb-core']:DrawText( "Adjust Bet: <strong>↑/↓</strong></p>LEFT CLICK: Bet number</p>SPACEBAR: Custom Amount</p>E: Change camera</p>ESC: Exit")
                 else
-                    exports['textUi']:DrawTextUi('show', "Adjust Bet: <strong>↑/↓</strong></p>LEFT CLICK: Bet number</p>E: Change camera</p>ESC: Exit")
+                    exports['qb-core']:DrawText( "Adjust Bet: <strong>↑/↓</strong></p>LEFT CLICK: Bet number</p>E: Change camera</p>ESC: Exit")
                 end
             else
-                exports['textUi']:DrawTextUi('show', "The game is starting..") 
+                exports['qb-core']:DrawText( "The game is starting..") 
                 hideUi()
             end
         end

@@ -415,11 +415,11 @@ CreateThread(function()
             end
             if inZone and not alreadyEnteredZone then
                 alreadyEnteredZone = true
-                exports['textUi']:DrawTextUi('show', text)  
+                exports['qb-core']:DrawText(text)  
             end
             if not inZone and alreadyEnteredZone then
                 alreadyEnteredZone = false
-                exports['textUi']:HideTextUi('hide')
+            exports['qb-core']:HideText()
             end
         end
         Wait(sleep)		
@@ -455,7 +455,7 @@ CreateThread(function()
             exports['casinoUi']:DrawCasinoUi('show', "Diamond Casino Blackjack</p>Game Starting in: "..tostring(timeLeft).."s</p>Current Bet: "..tostring(currentBetAmount))  
         end
         if drawCurrentHand then
-            exports['textUi']:DrawTextUi('show', "Your hand: "..tostring(currentHand).."</p>Dealers Hand: "..tostring(dealersHand))  
+            exports['qb-core']:DrawText("Your hand: "..tostring(currentHand).."</p>Dealers Hand: "..tostring(dealersHand))  
         end
         Wait(500)
     end
@@ -472,7 +472,7 @@ RegisterNetEvent("Blackjack:beginBetsBlackjack")
 AddEventHandler("Blackjack:beginBetsBlackjack",function(gameID,tableId)
     globalGameId = gameID
     -- blackjackInstructional = setupBlackjackInstructionalScaleform("instructional_buttons")
-    exports['textUi']:HideTextUi('hide')
+    exports['qb-core']:HideText()
     TriggerEvent("doj:client:openBetMenu")
     QBCore.Functions.Notify("Place your bets", 'primary', 3500)
     bettedThisRound = false
@@ -641,7 +641,7 @@ function goToBlackjackSeat(blackjackSeatID)
 
     
     -- print("[CMG Casino] start sit at blackjack seat") 
-    -- exports['textUi']:DrawTextUi('show', "Waiting for next game to start...") 
+    -- exports['qb-core']:DrawText('show', "Waiting for next game to start...") 
 
     blackjackAnimsToLoad = {
       "anim_casino_b@amb@casino@games@blackjack@dealer",

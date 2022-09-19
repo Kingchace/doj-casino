@@ -1,18 +1,11 @@
 fx_version 'cerulean'
-games      { 'gta5' }
+game  'gta5' 
 
+--
+-- Client
+--
 
-shared_scripts {
-	'config.lua',
+client_scripts {
+    'client.lua',
+    'config.lua'
 }
-
-
-client_scripts{
-	'@PolyZone/client.lua',
-    	'@PolyZone/CircleZone.lua',
-	'client/*.lua'
-} 
-
-server_scripts{
-	'server/*.lua'
-} 
